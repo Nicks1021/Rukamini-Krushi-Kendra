@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ product.name }} | रुक्मिणी कृषी केंद्र</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="/">
+            🌱 रुक्मिणी कृषी केंद्र
+        </a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">
+                        मुख्यपृष्ठ
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/#products">
+                        उत्पादने
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/#about">
+                        आमच्याबद्दल
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/#contact">
+                        संपर्क
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+
+<!-- Product Details -->
+
+<section class="py-5">
+
+    <div class="container">
+
+        <div class="row align-items-center">
+
+            <!-- Product Image -->
+
+            <div class="col-md-6 mb-4">
+
+                {% if product.image %}
+
+                    <img src="{{ product.image.url }}"
+                         class="img-fluid rounded shadow"
+                         style="width:100%; max-height:450px; object-fit:cover;"
+                         alt="{{ product.name }}">
+
+                {% else %}
+
+                    <div class="bg-light rounded shadow d-flex align-items-center justify-content-center"
+                         style="height:400px;">
+
+                        <span style="font-size:100px;">
+                            🌱
+                        </span>
+
+                    </div>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- Product Information -->
+
+            <div class="col-md-6">
+
+                <span class="badge bg-success mb-3">
+                    {{ product.category.name }}
+                </span>
+
+                <h1 class="fw-bold">
+                    {{ product.name }}
+                </h1>
+
+                <hr>
+
+                <h2 class="text-success">
+                    ₹ {{ product.price }}
+                </h2>
+
+                <p class="mt-4">
+                    {{ product.description }}
+                </p>
+
+
+                <!-- Stock -->
+
+                {% if product.stock > 0 %}
+
+                    <p>
+                        <strong>उपलब्ध साठा:</strong>
+                        {{ product.stock }}
+                    </p>
+
+                    <span class="badge bg-success">
+                        स्टॉक उपलब्ध आहे
+                    </span>
+
+                {% else %}
+
+                    <span class="badge bg-danger">
+                        सध्या स्टॉक उपलब्ध नाही
+                    </span>
+
+                {% endif %}
+
+
+                <!-- Buttons -->
+
+                <div class="mt-4">
+
+                    <a href="javascript:history.back()"
+                       class="btn btn-secondary me-2">
+                        ← मागे जा
+                    </a>
+
+                    <a href="https://wa.me/"
+                       class="btn btn-success">
+                        📱 WhatsApp वर चौकशी करा
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- Footer -->
+
+<footer class="bg-success text-white text-center py-4">
+
+    <p class="mb-0">
+        © 2026 रुक्मिणी कृषी केंद्र. सर्व हक्क राखीव.
+    </p>
+
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+</body>
+</html>
